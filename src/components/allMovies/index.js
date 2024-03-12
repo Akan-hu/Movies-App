@@ -46,8 +46,8 @@ const AllMovies = () => {
                         style={styles.imageStyle}
                       />
                       <Text style={styles.title}>
-                        {item?.Title?.length > 25
-                          ? item.Title?.slice(0, 25) + '...'
+                        {item?.Title?.length > 20
+                          ? item.Title?.slice(0, 20) + '...'
                           : item.Title}
                       </Text>
                     </View>
@@ -65,8 +65,8 @@ const AllMovies = () => {
                         style={styles.imageStyle}
                       />
                       <Text style={styles.title}>
-                        {item?.Title?.length > 25
-                          ? item.Title?.slice(0, 25) + '...'
+                        {item?.Title?.length > 20
+                          ? item.Title?.slice(0, 20) + '...'
                           : item.Title}
                       </Text>
                     </View>

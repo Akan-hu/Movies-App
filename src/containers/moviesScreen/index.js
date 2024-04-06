@@ -19,8 +19,6 @@ const MoviesScreen = () => {
   const navigation = useNavigation();
   const {params: item} = useRoute();
   const [isFavorite, setIsFavorite] = useState(false);
-  const [similarMovies, setSimilarMovies] = useState([1, 2, 3, 4]);
-  console.log('item.imdbRating', item.imdbRating);
 
   useEffect(() => {}, [item]);
   return (

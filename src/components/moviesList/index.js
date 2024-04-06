@@ -9,11 +9,10 @@ import {
 import React from 'react';
 import {styles} from './styles';
 import {useNavigation} from '@react-navigation/native';
-import {moviesData} from '../../containers/moviesData';
 
 const MoviesList = ({title, isSeeAllNeed = true, movieData}) => {
   const navigation = useNavigation();
-  console.log('data ', movieData);
+
   return (
     <View style={styles.containerStyle}>
       <View style={styles.containerStyle1}>

@@ -11,25 +11,20 @@ import {
 import React, {useCallback, useEffect, useState} from 'react';
 import {styles} from './styles';
 import {COLOR_GRAY, COLOR_WHITE} from '../../helper/colors';
-import {
-  ArrowLeftCircleIcon,
-  ChevronLeftIcon,
-  XMarkIcon,
-} from 'react-native-heroicons/outline';
+import {ChevronLeftIcon, XMarkIcon} from 'react-native-heroicons/outline';
 import {useNavigation} from '@react-navigation/native';
 import {moviesData} from '../moviesData';
-import {debounce} from 'lodash';
 const SearchScreen = () => {
   const navigation = useNavigation();
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredMovies, setFilteredMovies] = useState([]);
+  console.log('Movies list ', moviesData);
   const handleSearch = useCallback(value => {
     setSearchQuery(value);
     // Check if the search query is a valid year
     const isYear = /^\d{4}$/.test(value);
     if (value) {
       const query = value.toLowerCase();
-      console.log('27 ', query);
       const filteredResults = moviesData.results.filter(
         movie =>
           movie.Title.toLowerCase().includes(query) ||

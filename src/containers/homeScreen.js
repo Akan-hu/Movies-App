@@ -42,13 +42,12 @@ const HomeScreen = () => {
   const slicedData = moviesData?.results.slice(0, 10);
   useEffect(() => {
     if (isFocused) {
-      console.log('first');
       setTimeout(() => {
         setLoading(false);
       }, 800);
     }
   }, [isFocused]);
-  console.log('slicedData', slicedTopRatedData);
+
   return (
     <View style={styles.container}>
       <SafeAreaView>

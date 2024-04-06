@@ -5,7 +5,7 @@ import {COLOR_WHITE, STARS_YELLOW} from '../../helper/colors';
 const StarRating = ({rating, starSize = 35}) => {
   const totalStars = 5;
   const filledStars = Math.round(rating / 2);
-  console.log('Math.round(rating / 2)', Math.round(rating / 2));
+
   const emptyStars = totalStars - filledStars;
 
   const renderStars = (count, isFilled) => {

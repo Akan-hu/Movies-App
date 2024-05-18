@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {APP_BACKGROUND, COLOR_GRAY, COLOR_WHITE} from '../../helper/colors';
-import {height, width} from '../../helper';
+import {height, isIOS, width} from '../../helper';
 
 export const styles = StyleSheet.create({
   safeView: {
@@ -15,11 +15,12 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     borderColor: COLOR_GRAY,
     borderWidth: 2,
+    marginTop: isIOS ? 0 : 10,
     borderRadius: 15,
   },
   inputStyle: {
     flex: 1,
-    marginVertical: 10,
+    marginVertical: isIOS ? 10 : 0,
     paddingLeft: 10,
     color: COLOR_WHITE,
   },

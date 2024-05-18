@@ -1,13 +1,7 @@
 import {StyleSheet} from 'react-native';
-import {
-  APP_BACKGROUND,
-  COLOR_BLACK,
-  COLOR_TRANSPARENT,
-  COLOR_WHITE,
-  YELLOW_DARK,
-} from '../../helper/colors';
-import {height, width} from '../../helper';
-import {fontSize, fontFamily} from '../../helper/fonts';
+import {APP_BACKGROUND, COLOR_WHITE, YELLOW_DARK} from '../../helper/colors';
+import {height, isIOS, width} from '../../helper';
+import {fontSize} from '../../helper/fonts';
 export const styles = StyleSheet.create({
   scrollViewStyle: {
     backgroundColor: APP_BACKGROUND,
@@ -22,8 +16,16 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
   },
+  topView: {
+    flex: 1,
+    marginHorizontal: 8,
+    flexDirection: 'row',
+    marginTop: isIOS ? 3 : 15,
+    justifyContent: 'space-between',
+  },
   tchStyle: {
-    padding: 1,
+    paddingHorizontal: 3,
+    justifyContent: 'center',
     backgroundColor: YELLOW_DARK,
     borderRadius: 10,
   },
@@ -55,13 +57,14 @@ export const styles = StyleSheet.create({
   },
   descriptionStyle: {
     color: COLOR_WHITE,
-    marginHorizontal: 5,
+    marginHorizontal: 10,
     paddingVertical: 5,
     lineHeight: 20,
     ...fontSize.fontSizeMedium(),
   },
   similarView: {
     marginBottom: 10,
+    marginHorizontal: 10,
   },
   similarText: {
     marginTop: 10,
@@ -86,5 +89,35 @@ export const styles = StyleSheet.create({
     color: COLOR_WHITE,
     textAlign: 'center',
     marginTop: 10,
+  },
+  container: {
+    flex: 1,
+    margin: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'orange',
+    borderRadius: 10,
+  },
+  playButton: {
+    position: 'absolute',
+    zIndex: 1,
+  },
+  youtubeContainer: {
+    alignSelf: 'stretch',
+    height: 210,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  playButtonText: {
+    fontSize: 40,
+    color: 'white',
+  },
+  watch: {
+    color: COLOR_WHITE,
+    textAlign: 'center',
+    marginTop: 20,
+    fontSize: 18,
+    fontWeight: '500',
   },
 });

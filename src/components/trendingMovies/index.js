@@ -26,11 +26,18 @@ const TrendingMovies = props => {
         renderItem={({item}) => (
           <MovieCard item={item} handleClick={handleClick} />
         )}
-        firstItem={2}
+        layoutCardOffset={9}
         inactiveSlideOpacity={0.8}
         sliderWidth={width}
         itemWidth={width * 0.62}
+        inactiveSlideShift={0}
         slideStyle={styles.sliderStyle}
+        useScrollView={true}
+        loop={true} // Enable looping
+        autoplay={true} // Enable autoplay
+        autoplayDelay={500} // Adjust as needed
+        autoplayInterval={3000} // Increase interval to allow smooth transitions
+        loopClonesPerSide={data.length}
       />
     </View>
   );

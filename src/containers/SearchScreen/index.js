@@ -14,11 +14,12 @@ import {COLOR_GRAY, COLOR_WHITE} from '../../helper/colors';
 import {ChevronLeftIcon, XMarkIcon} from 'react-native-heroicons/outline';
 import {useNavigation} from '@react-navigation/native';
 import {moviesData} from '../moviesData';
+import {HOME_SCREEN} from '../../navigations/constants';
 const SearchScreen = () => {
   const navigation = useNavigation();
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredMovies, setFilteredMovies] = useState([]);
-  console.log('Movies list ', moviesData);
+
   const handleSearch = useCallback(value => {
     setSearchQuery(value);
     // Check if the search query is a valid year
@@ -46,7 +47,7 @@ const SearchScreen = () => {
     <SafeAreaView style={styles.safeView}>
       <View style={styles.inputView}>
         <TouchableOpacity
-          onPress={() => navigation?.navigate('HomeScreen')}
+          onPress={() => navigation?.navigate(HOME_SCREEN)}
           style={styles.crossIconBack}>
           <ChevronLeftIcon size={28} color={COLOR_WHITE} />
         </TouchableOpacity>

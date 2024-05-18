@@ -5,28 +5,29 @@ import HomeScreen from '../containers/homeScreen';
 import MoviesScreen from '../containers/moviesScreen';
 import AllMovies from '../components/allMovies';
 import SearchScreen from '../containers/SearchScreen';
+import {ALL_MOVIES, HOME_SCREEN, MOVIES_SCREEN, SEARCH} from './constants';
 const Stack = createStackNavigator();
 const AppNavigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="HomeScreen"
+          name={HOME_SCREEN}
           component={HomeScreen}
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="MovieScreen"
+          name={MOVIES_SCREEN}
           component={MoviesScreen}
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="AllMovies"
+          name={ALL_MOVIES}
           component={AllMovies}
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="Search"
+          name={SEARCH}
           component={SearchScreen}
           options={{headerShown: false}}
         />

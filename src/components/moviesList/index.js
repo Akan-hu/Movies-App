@@ -9,6 +9,7 @@ import {
 import React from 'react';
 import {styles} from './styles';
 import {useNavigation} from '@react-navigation/native';
+import {ALL_MOVIES} from '../../navigations/constants';
 
 const MoviesList = ({title, isSeeAllNeed = true, movieData}) => {
   const navigation = useNavigation();
@@ -20,7 +21,7 @@ const MoviesList = ({title, isSeeAllNeed = true, movieData}) => {
         {isSeeAllNeed ? (
           <TouchableOpacity
             onPress={() =>
-              navigation?.navigate('AllMovies', {
+              navigation?.navigate(ALL_MOVIES, {
                 title: title,
               })
             }>
@@ -39,11 +40,7 @@ const MoviesList = ({title, isSeeAllNeed = true, movieData}) => {
               onPress={() => navigation?.push('MovieScreen', item)}>
               <View style={styles.imageContainer}>
                 <Image source={{uri: item?.Poster}} style={styles.imageStyle} />
-                <Text style={styles.movieTitle}>
-                  {/* {item?.Title?.length > 14
-                        ? item.Title?.slice(0, 14) + '...'
-                        : item.Title} */}
-                </Text>
+                <Text style={styles.movieTitle}></Text>
               </View>
             </TouchableWithoutFeedback>
           );

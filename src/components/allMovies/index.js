@@ -45,6 +45,7 @@ const AllMovies = () => {
                         source={{uri: item?.Poster}}
                         style={styles.imageStyle}
                       />
+
                       <Text style={styles.title}>
                         {item?.Title?.length > 20
                           ? item.Title?.slice(0, 20) + '...'

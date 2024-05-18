@@ -4,18 +4,19 @@ import {height, width} from '../../helper';
 export const styles = StyleSheet.create({
   textStyle: {
     color: 'white',
-    fontSize: 18,
-    marginHorizontal: 6,
+    fontSize: 20,
+    marginHorizontal: 10,
     marginBottom: 10,
-    marginTop: 8,
+    marginTop: 15,
     fontWeight: '600',
   },
   containerStyle: {
-    marginBottom: 8,
+    marginBottom: 15,
     marginTop: 8,
   },
   sliderStyle: {
     display: 'flex',
+    flexDirection: 'row',
     alignItems: 'center',
   },
   textStl: {

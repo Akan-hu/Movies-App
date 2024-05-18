@@ -5,40 +5,62 @@ import {
   SafeAreaView,
   TouchableOpacity,
   Image,
+  Linking,
+  Platform,
+  ToastAndroid,
+  AlertIOS,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {styles} from './styles';
 import {ChevronLeftIcon} from 'react-native-heroicons/outline';
 import {HeartIcon} from 'react-native-heroicons/solid';
 import {COLOR_ERROR_RED, COLOR_WHITE} from '../../helper/colors';
 import LinearGradient from 'react-native-linear-gradient';
-import MoviesList from '../../components/moviesList';
 import StarRating from '../../components/ratings';
+import YoutubePlayer from 'react-native-youtube-iframe';
 const MoviesScreen = () => {
   const navigation = useNavigation();
   const {params: item} = useRoute();
   const [isFavorite, setIsFavorite] = useState(false);
 
-  useEffect(() => {}, [item]);
+  const youtubeVideoId = item?.videoId;
+  console.log(youtubeVideoId);
+  const handleWatchMovie = () => {
+    if (youtubeVideoId != undefined) {
+      const youtubeUrl = `https://www.youtube.com/watch?v=${youtubeVideoId}`;
+      Linking.openURL(youtubeUrl);
+    } else {
+      if (Platform.OS === 'android') {
+        ToastAndroid.show(
+          'This video is currently not available',
+          ToastAndroid.SHORT,
+        );
+      } else {
+        AlertIOS.alert('This video is currently not available');
+      }
+    }
+  };
   return (
     <ScrollView style={styles.scrollViewStyle}>
       {/*back button and movie poster */}
       <View style={styles.headerContainer}>
         <SafeAreaView style={styles.headerView}>
-          <TouchableOpacity
-            onPress={() => navigation?.goBack()}
-            style={styles.tchStyle}>
-            <ChevronLeftIcon size={'28'} strokeWidth={2.5} color={'white'} />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => setIsFavorite(!isFavorite)}
-            style={styles.heartIcon}>
-            <HeartIcon
-              size={35}
-              color={isFavorite ? COLOR_ERROR_RED : COLOR_WHITE}
-            />
-          </TouchableOpacity>
+          <View style={styles.topView}>
+            <TouchableOpacity
+              onPress={() => navigation?.goBack()}
+              style={styles.tchStyle}>
+              <ChevronLeftIcon size={'30'} strokeWidth={2.5} color={'white'} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => setIsFavorite(!isFavorite)}
+              style={styles.heartIcon}>
+              <HeartIcon
+                size={38}
+                color={isFavorite ? COLOR_ERROR_RED : COLOR_WHITE}
+              />
+            </TouchableOpacity>
+          </View>
         </SafeAreaView>
         <View>
           <Image
@@ -77,11 +99,23 @@ const MoviesScreen = () => {
         {item.imdbRating !== 'N/A' && (
           <>
             <Text style={styles.ratings}>IMDB Ratings</Text>
-
+            <Text style={styles.ratingText}>{item.imdbRating}/10</Text>
             <StarRating rating={parseFloat(item.imdbRating)} />
           </>
         )}
-        <Text style={styles.ratingText}>{item.imdbRating}/10</Text>
+      </View>
+      {/** watch movie you tube view */}
+      <Text style={styles.watch}>Tap below to Watch Full Movie</Text>
+      <View style={styles.container}>
+        <View style={styles.youtubeContainer}>
+          <YoutubePlayer height={300} play={false} videoId={youtubeVideoId} />
+
+          <TouchableOpacity
+            style={styles.playButton}
+            onPress={handleWatchMovie}>
+            <Text style={styles.playButtonText}>▶️</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </ScrollView>
   );

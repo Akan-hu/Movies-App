@@ -2,7 +2,6 @@ import {
   View,
   Text,
   SafeAreaView,
-  Platform,
   StatusBar,
   TouchableOpacity,
   ScrollView,
@@ -44,7 +43,7 @@ const HomeScreen = () => {
     if (isFocused) {
       setTimeout(() => {
         setLoading(false);
-      }, 800);
+      }, 1000);
     }
   }, [isFocused]);
 
@@ -55,7 +54,7 @@ const HomeScreen = () => {
         <View style={styles.container2}>
           <Bars3CenterLeftIcon size="30" strokeWidth={2} color={'white'} />
           <Text style={styles.tilteStyle1}>
-            M<Text style={styles.tilteStyle}>ovies</Text>
+            Watch<Text style={styles.tilteStyle}>Thrill</Text>
           </Text>
           <TouchableOpacity onPress={() => navigation?.navigate('Search')}>
             <MagnifyingGlassIcon size={30} strokeWidth={'2'} color={'white'} />

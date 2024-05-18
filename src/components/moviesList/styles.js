@@ -4,12 +4,12 @@ import {height, width} from '../../helper';
 export const styles = StyleSheet.create({
   containerStyle: {
     marginVertical: 4,
-    marginHorizontal: 6,
+    marginHorizontal: 10,
     marginTop: 10,
   },
   titleStyle: {
     color: 'white',
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: '600',
   },
   tchStyle: {
